@@ -28,14 +28,7 @@ const userData = fs.readFileSync(
 );
 const users = JSON.parse(userData);
 
-const writeJSON = () => {
-  let accountsJSON = JSON.stringify(accounts, null, 4);
-  fs.writeFileSync(
-    path.join(__dirname, "json", "accounts.json"),
-    accountsJSON,
-    "utf8"
-  );
-};
+const { writeJSON } = require("./data.js");
 
 //Define the route for the root URL path "/"
 app.get("/", (req, res) => {
