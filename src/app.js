@@ -14,6 +14,7 @@ const accounts = JSON.parse(accountData);
 
 // Set the "public" directory as the static directory
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
 // Set the "views" directory for the "ejs" templates
 app.set("views", path.join(__dirname, "views"));
@@ -48,6 +49,12 @@ app.get("/checking", (req, res) => {
 });
 app.get("/credit", (req, res) => {
   res.render("account", { title: "Account Summary", account: accounts.credit });
+});
+app.get("/transfer", (req, res) => {
+  res.render("transfer", {
+    title: "Account Summary",
+    account: accounts.credit,
+  });
 });
 
 app.get("/profile", (req, res) => {
